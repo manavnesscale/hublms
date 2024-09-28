@@ -1,0 +1,77 @@
+{% if frappe.session.user != "Guest" %}
+{% set membership = frappe.db.get_value("Hublms Enrollment",
+	{"member": frappe.session.user, "course": program.program_name},
+	["name", "course", "batch_old", "current_lesson", "member_type", "progress"], as_dict=1) %}
+{% set progress = frappe.utils.cint(membership.progress) %}
+{% else %}
+{% set membership, progress = None, None %}
+{% endif %}
+
+
+<div class="common-card-style course-card" data-course="Course 102" data-rating="0" data-enrollment="0" data-creation="2023-11-23 09:03:04.921132">
+
+    <div class="course-image  default-image ">
+        <div class="course-tags">
+        </div>
+        <div class="default-image-text">C</div>
+    </div>
+
+
+    <div class="course-card-content">
+        <div class="course-card-meta">
+            
+        </div>
+
+        <div class="course-card-title">
+            Course 102
+        </div>
+
+        <div class="short-introduction">
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+        </div>
+
+        
+
+        <div class="course-card-footer">
+
+            <div class="course-card-instructors">
+                
+                
+                
+                
+                
+<span class="avatar avatar-small" title="Francis">
+    <a class="button-links" href="/users/francis">
+        
+        <span class="avatar-frame standard-image" title="Francis" style="background-color: var(--red-avatar-bg); color: var(--red-avatar-color);">
+            F
+        </span>
+        
+    </a>
+</span>
+
+                
+                
+                <a class="button-links" href="/users/francis">
+                    <span class="course-instructor">
+                    
+                        Francis
+                    
+                    </span>
+                </a>
+            </div>
+
+            <div class="course-price">
+                
+                    Free
+                
+            </div>
+        </div>
+
+        
+            
+				<a class="stretched-link" href="/hublms/Course 102"></a>
+            
+        
+    </div>
+</div>

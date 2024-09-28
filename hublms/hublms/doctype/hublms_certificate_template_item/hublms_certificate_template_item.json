@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-03 08:08:13.905128",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "text",
+  "image",
+  "position_x",
+  "position_y",
+  "font_size",
+  "font_color"
+ ],
+ "fields": [
+  {
+   "fieldname": "text",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Text"
+  },
+  {
+   "fieldname": "position_x",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Position X",
+   "reqd": 1
+  },
+  {
+   "fieldname": "position_y",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Position Y",
+   "reqd": 1
+  },
+  {
+   "fieldname": "font_size",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Font Size",
+   "reqd": 1
+  },
+  {
+   "fieldname": "font_color",
+   "fieldtype": "Color",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Font Color",
+   "reqd": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "in_filter": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Image"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-09 10:27:52.581790",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Certificate Template Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

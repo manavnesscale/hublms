@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.percentage<50",
+ "creation": "2024-03-05 07:20:41.492093",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Hublms Quiz Submission",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "\n    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap\">\n    <div style=\"background-color: #f0f0f0; font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center;\">\n\n        <div style=\"max-width: 600px; margin: 20px auto; background-color: #808080; padding: 20px;   text-align: left;\">\n            <img src=\"http://sharetree.agilesystem.org/files/Logo - Copy.png\" alt=\"Logo\" style=\"max-width: 100%; height: auto; margin-bottom: 20px;\">\n            <!-- <div style=\"text-align: center;\">\n                <img src=\"http://sharetree.agilesystem.org/files/Congratulations.png\" alt=\"test\" style=\"max-width: 100%; height: auto; margin-bottom: 20px; display: inline-block;\">\n            </div> -->\n            <div style=\"text-align: center; color: #fff; font-size: 30px; font-family: 'Raleway', sans-serif;font-weight: 800;\">\n                \n                You're nearly </br>there\n\n            </div>\n            <!-- p style=\"text-align: right; color: #fff; font-size: 18px; font-family: 'Raleway', sans-serif;font-weight: 800;\">\n                Login to\n                <a href=\"\" style='text-decoration: none; color: #99c268 ; font-family: \"Century Gothic\", CenturyGothic, AppleGothic, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;'>Sharetree Academy</span>\n            </p> -->\n            <div style='color: #99c268 ; font-family: \"Century Gothic\", CenturyGothic, AppleGothic, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;'>\n                <p style=\"text-align: right; color: #fff; \">\n                    Attend a\n                    <a href=\"\" style=\"  text-decoration: none;  color: #99c268; \">Practical</a><br>\n                    <span href=\"\" style=\"  text-decoration: none;  color: #99c268; \">session</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n\n                </p>\n                <p style=\"text-align: right; color: #fff; \">\n                </p>\n            </div>\n        </div>\n        <div style=\"max-width: 600px; margin: 20px auto;  padding: 20px;   text-align: left;\">\n\n\n            <p> \n            Hi {{ doc.member }},\n            Recently noticed you\u2019ve had your first attempt at the Mental Health First Responder Certification and only narrowly missed out. Rest assured that you can attempt again and if still unsuccessful we will provide you further attempts after we have a support and review session to guide further learning. \n            Before using your next attempt, we suggest you review the following topics.\n            </p>\n\n                <b>\n            LIFT\n                </b>\n\n            <ul>\n            <li>\n                Add specific questions from results\n            </li>\n            </ul>\n                <b>\n            ACT\n\n                </b>\n            <ul>\n\n            <li>\n                Add specific questions from results\n            </li>\n            </ul>\n            <p> \n\n            We would recommend reviewing the above topics in your handbook and watching the related videos in the ShareTree Academy portal before attempting again. \n            Remember we are here to support you through this process, and you have support available should you wish to use it before attempting again. Just book some time with me and we can go through your results.\n            </p>\n            <p> \n            To book support time here is my calendar https://calendly.com/steven-farrugia/30min\n            </p>\n            <p> \n            with Gratitude,\n            </p>\n\n            Czarina Madayag | Communications, Marketing and Grants Coordinator| ShareTree.org\n            Service | Innovation | Excellence\n\n            Working days: Tuesday \u2013 Friday 8am-4pm \n\n            We\u2019re committed to Mental Health & Wellbeing. Join us - https://www.sharetree.org/jointhepulse\n\n            260A Blackburn Road, Glen Waverley VIC 3150 |\n            M: +61 42 068 7707|E: mailto:czarina@sharetree.org\n\n\n            Please join me on Emotional Pulse\n        </div>\n        <div style=\"max-width: 600px; margin: 20px auto; background-color: #808080; padding: 20px;   text-align: left;\">\n            <p> \n\n            Czarina Madayag | Communications, Marketing and Grants Coordinator| ShareTree.org\n            Service | Innovation | Excellence\n            </p> \n\n            <p> \n\n            Working days: Tuesday \u2013 Friday 8am-4pm \n            </p> \n\n            We\u2019re committed to Mental Health & Wellbeing. Join us - https://www.sharetree.org/jointhepulse\n            <p> \n\n            260A Blackburn Road, Glen Waverley VIC 3150 | E: mailto:czarina@sharetree.org\n            </p>\n\n\n            Please join me on Emotional Pulse\n\n        </div>\n\n    </div>\n\n",
+ "message_type": "HTML",
+ "modified": "2024-03-26 07:11:34.870858",
+ "modified_by": "admin@demo.com",
+ "module": "Hublms",
+ "name": "Quiz-Failed",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "member"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Notifications",
+ "sender_email": "lms.hubtoo@gmail.com",
+ "subject": "You\u2019re nearly there"
+}

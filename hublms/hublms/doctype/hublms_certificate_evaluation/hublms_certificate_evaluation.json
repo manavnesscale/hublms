@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-23 00:44:33.899657",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "member_name",
+  "course",
+  "column_break_5",
+  "date",
+  "start_time",
+  "end_time",
+  "batch_name",
+  "section_break_6",
+  "rating",
+  "status",
+  "column_break_10",
+  "summary"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Member",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "member.full_name",
+   "fieldname": "member_name",
+   "fieldtype": "Data",
+   "label": "Member Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Course",
+   "options": "Hublms Course",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "batch_name",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Batch Name",
+   "options": "Hublms Batch"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "Evaluation Details"
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Rating",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nIn Progress\nPass\nFail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Small Text",
+   "label": "Summary"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-12-09 10:25:56.163683",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Certificate Evaluation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Class Evaluator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hublms Instructor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Green",
+   "title": "Pass"
+  },
+  {
+   "color": "Red",
+   "title": "Fail"
+  },
+  {
+   "color": "Blue",
+   "title": "Pending"
+  },
+  {
+   "color": "Orange",
+   "title": "In Progress"
+  }
+ ],
+ "title_field": "member_name"
+}

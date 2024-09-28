@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2024-01-09 11:21:25.395191",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Hublms Quiz Submission",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<h3>Order Overdue</h3>\n\n<p>{{ doc.member }} submitted {{ doc.quiz }} from course {{ doc.course }} and has gotten a score of {{ doc.score }} out of {{ doc.score_out_of }}.</p>",
+ "modified": "2024-01-09 11:28:02.024160",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "New Quiz Submission (Instructor)",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "",
+   "receiver_by_role": "Hublms Instructor"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Notifications",
+ "sender_email": "teligtanloc@gmail.com",
+ "subject": "New Quiz Submission (Instructor)"
+}

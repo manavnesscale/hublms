@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Progress</title>
+    <link rel="icon" href="/assets/hublms/icons/check.svg" type="image/svg+xml">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .lesson-list {
+            list-style-type: none !important;
+            padding: 0;
+        }
+
+        .lesson-list-items {
+            list-style-type: none !important;
+            padding-left: 12px;
+        }
+
+        .lesson-item {
+            width: 100%;
+            overflow: hidden;
+            /* Clear float */
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .chevron-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .float-left {
+            float: left;
+            width: 70%;
+            /* Adjust the width as needed */
+            padding: 10px;
+        }
+
+        .float-right {
+            float: right;
+            padding: 10px;
+        }
+
+        .container {
+            width: 100%;
+            overflow: hidden;
+            /* Clear float */
+        }
+    </style>
+</head>
+
+<body>
+    {% set topics = get_topics(course) %}
+   
+    <div class="bold-heading mb-4">
+        <h4>{{course}}</h4>
+    </div>
+
+    <div class="progress-percent m-0">{{progress}}% Completed</div>
+
+    <div class="progress" title="{{progress}}% Completed">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"
+            style="width:{{progress}}%"></div>
+    </div>
+
+    {% if topics | length %}
+    {% for topic in topics %}
+    {% set topic_content = get_topic_contents(course.name, topic) %}
+
+    <div class="mt-4">
+        <h5>{{ topic.name }}</h5>
+    </div>
+
+    <ul class="lesson-list">
+        {% if topic_content | length %}
+        {% for content in topic_content %}
+        <li class="lesson-item">
+            <div class="container">
+                <div class="float-left">
+                    {{ content.content }}
+                </div>
+                <div class="float-right {{ get_progress(course, content.content, member) != 'Complete' and 'hide' }}" >
+                    <img src="/assets/hublms/icons/check.svg" alt="Chevron Icon" class="chevron-icon">
+                </div>
+                
+            </div>
+
+            
+        </li>
+        {% endfor %}
+        {% endif %}
+
+    </ul>
+    {% endfor %}
+    {% endif %}
+
+</body>
+
+</html>

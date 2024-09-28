@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "creation": "2023-11-23 07:54:15.036223",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "option",
+  "is_correct"
+ ],
+ "fields": [
+  {
+   "fieldname": "option",
+   "fieldtype": "Data",
+   "label": "Option"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_correct",
+   "fieldtype": "Check",
+   "label": "Is Correct"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-23 09:15:54.022784",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Option",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

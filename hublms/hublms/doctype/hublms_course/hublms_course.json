@@ -1,0 +1,319 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2023-11-23 00:28:34.893556",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "video_link",
+  "image",
+  "column_break_3",
+  "instructors",
+  "tags",
+  "status",
+  "section_break_7",
+  "published",
+  "column_break_10",
+  "upcoming",
+  "column_break_12",
+  "disable_self_learning",
+  "section_break_18",
+  "short_introduction",
+  "description",
+  "course_topics",
+  "related_courses",
+  "pricing_section",
+  "paid_course",
+  "currency",
+  "course_price",
+  "certification_section",
+  "enable_certification",
+  "expiry",
+  "max_attempts",
+  "certificate_template",
+  "column_break_rxww",
+  "grant_certificate_after",
+  "evaluator",
+  "duration",
+  "student_statistics_tab",
+  "student_list",
+  "dashboard_tab",
+  "publish",
+  "route"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1,
+   "width": "200"
+  },
+  {
+   "fieldname": "video_link",
+   "fieldtype": "Data",
+   "label": "Video Embed Link"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Preview Image"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "instructors",
+   "fieldtype": "Table MultiSelect",
+   "in_standard_filter": 1,
+   "label": "Instructors",
+   "max_height": "50px",
+   "options": "Hublms Course Instructor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tags"
+  },
+  {
+   "default": "In Progress",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "In Progress\nUnder Review\nApproved",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Course Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "upcoming",
+   "fieldtype": "Check",
+   "label": "Upcoming"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "disable_self_learning",
+   "fieldtype": "Check",
+   "label": "Disable Self Learning"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "short_introduction",
+   "fieldtype": "Small Text",
+   "label": "Short Introduction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "related_courses",
+   "fieldtype": "Table",
+   "label": "Related Courses",
+   "options": "Hublms Related Courses"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "default": "0",
+   "fieldname": "paid_course",
+   "fieldtype": "Check",
+   "label": "Paid Course"
+  },
+  {
+   "depends_on": "paid_course",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "mandatory_depends_on": "paid_course",
+   "options": "Currency"
+  },
+  {
+   "depends_on": "paid_course",
+   "fieldname": "course_price",
+   "fieldtype": "Currency",
+   "label": "Course Price",
+   "mandatory_depends_on": "paid_course"
+  },
+  {
+   "fieldname": "certification_section",
+   "fieldtype": "Section Break",
+   "label": "Certification"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_certification",
+   "fieldtype": "Check",
+   "label": "Enable Certification"
+  },
+  {
+   "default": "0",
+   "depends_on": "enable_certification",
+   "fieldname": "expiry",
+   "fieldtype": "Int",
+   "label": "Certification Expires After (Years)"
+  },
+  {
+   "default": "1",
+   "depends_on": "eval: doc.grant_certificate_after == \"Evaluation\"",
+   "fieldname": "max_attempts",
+   "fieldtype": "Int",
+   "label": "Max Attempts for Evaluations"
+  },
+  {
+   "fieldname": "column_break_rxww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "enable_certification",
+   "fieldname": "grant_certificate_after",
+   "fieldtype": "Select",
+   "label": "Grant Certificate After",
+   "options": "Completion\nEvaluation"
+  },
+  {
+   "depends_on": "eval: doc.grant_certificate_after == \"Evaluation\"",
+   "fieldname": "evaluator",
+   "fieldtype": "Link",
+   "label": "Evaluator",
+   "mandatory_depends_on": "eval: doc.grant_certificate_after == \"Evaluation\"",
+   "options": "Hublms Course Evaluator"
+  },
+  {
+   "depends_on": "eval: doc.grant_certificate_after == \"Evaluation\"",
+   "fieldname": "duration",
+   "fieldtype": "Select",
+   "label": "Duration for Attempts",
+   "options": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12"
+  },
+  {
+   "fieldname": "course_topics",
+   "fieldtype": "Table",
+   "label": "Topics",
+   "options": "Hublms Topic Reference"
+  },
+  {
+   "fieldname": "student_statistics_tab",
+   "fieldtype": "Tab Break",
+   "hidden": 1,
+   "label": "Student statistics"
+  },
+  {
+   "fieldname": "student_list",
+   "fieldtype": "Table",
+   "label": "Student List",
+   "options": "Hublms Students Stats"
+  },
+  {
+   "fieldname": "dashboard_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dashboard",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "certificate_template",
+   "fieldtype": "Link",
+   "label": "Certificate Template",
+   "options": "Hublms Certificate Template"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish",
+   "fieldtype": "Check",
+   "label": "Publish"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  }
+ ],
+ "is_published_field": "published",
+ "links": [
+  {
+   "group": "Course Details",
+   "link_doctype": "Hublms User Enrollment",
+   "link_fieldname": "course"
+  }
+ ],
+ "make_attachments_public": 1,
+ "modified": "2024-02-06 08:03:26.768601",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Course",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hublms Instructor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "title",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

@@ -1,0 +1,36 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2023-11-23 07:47:59.647449",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lesson"
+ ],
+ "fields": [
+  {
+   "fieldname": "lesson",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lesson",
+   "options": "Course Lesson",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-23 09:15:56.855231",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Lesson Reference",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

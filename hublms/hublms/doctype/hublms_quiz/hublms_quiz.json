@@ -1,0 +1,228 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2023-11-23 00:30:23.356804",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "show_answers",
+  "show_submission_history",
+  "column_break_gaac",
+  "max_attempts",
+  "total_marks",
+  "passing_percentage",
+  "section_break_dupm",
+  "description",
+  "section_break_sbjx",
+  "questions",
+  "add_multiple",
+  "settings_tab",
+  "randomize_questions",
+  "subset",
+  "time",
+  "section_break_pred",
+  "certification_column",
+  "enable_certification",
+  "expiry",
+  "column_break_hkxo",
+  "grant_certificate_at",
+  "certificate_template"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "show_answers",
+   "fieldtype": "Check",
+   "label": "Show Answers"
+  },
+  {
+   "fieldname": "column_break_gaac",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_attempts",
+   "fieldtype": "Int",
+   "label": "Max Attempts"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_submission_history",
+   "fieldtype": "Check",
+   "label": "Show Submission History"
+  },
+  {
+   "fieldname": "passing_percentage",
+   "fieldtype": "Int",
+   "label": "Passing Percentage",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_marks",
+   "fieldtype": "Int",
+   "label": "Total Marks",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_sbjx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "questions",
+   "fieldtype": "Table",
+   "label": "Questions",
+   "options": "Hublms Quiz Question"
+  },
+  {
+   "fieldname": "add_multiple",
+   "fieldtype": "Button",
+   "label": "Add Multiple"
+  },
+  {
+   "default": "0",
+   "fieldname": "time",
+   "fieldtype": "Int",
+   "label": "Time Per Question (in Seconds)"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "randomize_questions",
+   "fieldtype": "Check",
+   "label": "Randomize Questions"
+  },
+  {
+   "fieldname": "subset",
+   "fieldtype": "Int",
+   "label": "Subset"
+  },
+  {
+   "fieldname": "section_break_dupm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "certificate_template",
+   "fieldtype": "Link",
+   "label": "Certificate Template",
+   "options": "Hublms Certificate Template"
+  },
+  {
+   "fieldname": "section_break_pred",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "certification_column",
+   "fieldtype": "Column Break",
+   "label": "Certification"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_certification",
+   "fieldtype": "Check",
+   "label": "Enable Certification"
+  },
+  {
+   "fieldname": "expiry",
+   "fieldtype": "Data",
+   "label": "Certification Expires After (Years)"
+  },
+  {
+   "fieldname": "column_break_hkxo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grant_certificate_at",
+   "fieldtype": "Data",
+   "label": "Grant Certificate At Score Percentage"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-09 09:20:48.529187",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Quiz",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Moderator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Course Creator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hublms Instructor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

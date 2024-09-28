@@ -1,0 +1,59 @@
+{% extends "hublms/templates/hublms_base.html" %}
+{% block title %}
+{{ _("Validation") }}
+{% endblock %}
+
+
+{% block page_content %}
+<div class="course-home-top-container">
+
+    
+
+    <div class="course-home-page">
+        <div class="container">
+
+
+            <div class="course-body-container">
+
+                <div class="">
+                    <form class="review-form" id="review-form">
+                        
+
+
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label class="control-label reqd" style="padding-right: 0px;">Certificate Code</label>
+                            </div>
+                            <div class="control-input-wrapper">
+                                <div class="control-input">
+                                    <input type="text" autocomplete="off"
+                                        class="input-with-feedback form-control code"
+                                        data-fieldtype="Text" data-fieldname="feedback_comments"
+                                        spellcheck="false"></input>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="error-field muted-text"></p>
+                    </form>
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-primary btn-sm" data-course="course-1" id="verify">
+                        Verify
+                    </button>
+                </div>
+
+
+
+
+                
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

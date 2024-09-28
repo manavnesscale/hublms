@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "autoname": "format:{content}-{#####}",
+ "creation": "2023-11-27 09:00:31.726896",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "content_type",
+  "content",
+  "prerequisite",
+  "column_break_2"
+ ],
+ "fields": [
+  {
+   "fieldname": "content_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Content Type",
+   "options": "\nHublms Article\nHublms Video\nHublms Quiz\nHublms Assignment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Content",
+   "options": "content_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "prerequisite",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Prerequisite",
+   "options": "Hublms Topic Content"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-23 10:55:31.136872",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Topic Content",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

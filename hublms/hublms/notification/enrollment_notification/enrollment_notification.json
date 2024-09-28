@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2024-01-09 08:00:24.415140",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Hublms User Enrollment",
+ "enabled": 0,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<h3>New Enrollment</h3>\n\n<p>You have been enrolled to  {{ doc.course }}.</p>",
+ "modified": "2024-03-05 09:50:49.684188",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Enrollment Notification",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "member",
+   "receiver_by_role": ""
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Notifications",
+ "subject": "Mental Health First Responder Program"
+}

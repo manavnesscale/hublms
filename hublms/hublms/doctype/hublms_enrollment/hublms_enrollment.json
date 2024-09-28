@@ -1,0 +1,213 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "autoincrement",
+ "creation": "2023-11-23 00:39:38.173967",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "info_tab",
+  "group_name",
+  "column_break_3",
+  "payment",
+  "section_break_8",
+  "cohort",
+  "subgroup",
+  "batch_old",
+  "column_break_12",
+  "current_lesson",
+  "progress",
+  "role",
+  "tab_2_tab",
+  "program",
+  "course",
+  "topic",
+  "tab_3_tab",
+  "member_type",
+  "lms_users",
+  "add_multiple"
+ ],
+ "fields": [
+  {
+   "default": "Student",
+   "fieldname": "member_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member Type",
+   "options": "\nStudent\nMentor\nStaff"
+  },
+  {
+   "fieldname": "payment",
+   "fieldtype": "Link",
+   "label": "Payment",
+   "options": "Hublms Payment"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cohort",
+   "fieldtype": "Link",
+   "label": "Cohort",
+   "options": "Hublms Cohort"
+  },
+  {
+   "fieldname": "subgroup",
+   "fieldtype": "Data",
+   "label": "Subgroup"
+  },
+  {
+   "fieldname": "batch_old",
+   "fieldtype": "Link",
+   "label": "Batch Old",
+   "options": "Hublms Batch Old"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_lesson",
+   "fieldtype": "Data",
+   "label": "Current Lesson"
+  },
+  {
+   "fieldname": "progress",
+   "fieldtype": "Float",
+   "label": "Progress",
+   "read_only": 1
+  },
+  {
+   "default": "Member",
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "label": "Role",
+   "options": "\nMember\nAdmin"
+  },
+  {
+   "fetch_from": "batch.course",
+   "fieldname": "program",
+   "fieldtype": "Table",
+   "label": "Program/s",
+   "options": "Hublms Program Reference"
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Table",
+   "label": "Course/s",
+   "options": "Hublms Course Reference"
+  },
+  {
+   "fieldname": "topic",
+   "fieldtype": "Table",
+   "label": "Topic/s",
+   "options": "Hublms Topic Reference"
+  },
+  {
+   "fieldname": "group_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Group Name",
+   "options": "Hublms Group"
+  },
+  {
+   "fieldname": "lms_users",
+   "fieldtype": "Table",
+   "label": "Users",
+   "options": "Hublms User Reference"
+  },
+  {
+   "fieldname": "add_multiple",
+   "fieldtype": "Button",
+   "label": "Add Multiple"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "tab_3_tab",
+   "fieldtype": "Tab Break",
+   "label": "Users"
+  },
+  {
+   "fieldname": "info_tab",
+   "fieldtype": "Tab Break",
+   "label": "Info"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-12-09 10:47:12.555834",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Enrollment",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "LMS Student",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Moderator",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hublms Instructor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "group_name"
+}

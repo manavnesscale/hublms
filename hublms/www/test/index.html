@@ -1,0 +1,11 @@
+<!-- Inside your website template -->
+{% extends "hublms/templates/hublms_base.html" %}
+{% block page_content %}
+
+<form id="upload-form">
+    <input class = "attach-file" type="file" name="file" id="file-input" accept="image/*">
+    <button id="testButton" class = "testButton" type="button" >Upload</button>
+</form>
+
+
+{% endblock %}

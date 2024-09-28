@@ -1,0 +1,282 @@
+{% extends "hublms/templates/hublms_base.html" %}
+
+
+{% block title %}
+{{ 'Hublms' }}
+{% endblock %}
+
+
+{% block page_content %}
+<div class="common-page-style pt-8">
+    <div class="container">
+        <div class="modal fade search-modal" id="search-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <input class="search search-course" id="search-course" placeholder="Search for courses">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script> frappe.ready(() => {
+                $("#search-course").keyup((e) => {
+                    search_course(e);
+                });
+
+                $("#open-search").click((e) => {
+                    show_search_bar(e);
+                });
+
+                $("#search-modal").on("hidden.bs.modal", () => {
+                    hide_search_bar();
+                });
+
+                $(document).keydown(function (e) {
+                    if ((e.metaKey || e.ctrlKey) && e.key == "k") {
+                        show_search_bar(e);
+                    }
+                });
+            });
+
+            const search_course = (e) => {
+                let input = $(e.currentTarget).val();
+                if (input == window.input) return;
+                window.input = input;
+
+                if (input.length < 3 || input.trim() == "") {
+                    $(".result-row").remove();
+                    return;
+                }
+
+                frappe.call({
+                    method: "lms.lms.doctype.lms_course.lms_course.search_course",
+                    args: {
+                        text: input,
+                    },
+                    callback: (data) => {
+                        render_course_list(data);
+                    },
+                });
+            };
+
+            const render_course_list = (data) => {
+                let courses = data.message;
+                $(".result-row").remove();
+
+                if (!courses.length) {
+                    let element = `<a class="result-row"> ${__("No result found")} </a>`;
+                    $(element).insertAfter("#search-course");
+                    return;
+                }
+
+                for (let i in courses) {
+                    let element = `<a class="result-row" href="/courses/${courses[i].name}"> ${courses[i].title} </a>`;
+                    $(element).insertAfter("#search-course");
+                }
+            };
+
+            const show_search_bar = (e) => {
+                $("#search-modal").modal("show");
+                setTimeout(() => {
+                    $("#search-course").focus();
+                }, 1000);
+            };
+
+            const hide_search_bar = (e) => {
+                $("#search-course").val("");
+                $(".result-row").remove();
+            }; 
+        </script>
+
+        <div class="course-list-menu">
+            <select class="lms-menu" id="course-filter">
+                <option disabled="" value="">
+                    Sort By
+                </option>
+                <option selected="" value="enrollment">
+                    Most Popular
+                </option>
+                <option value="rating">
+                    Highest Rated
+                </option>
+                <option value="creation">
+                    Newest
+                </option>
+            </select>
+            <div class="course-list-buttons">
+                <a class="btn btn-default btn-sm" href="/users">
+                    My Profile
+                </a>
+                <a class="btn btn-default btn-sm" id="open-search">
+                    Search (Ctrl + k)
+                </a>
+                <a class="btn btn-primary btn-sm" href="/courses/new-course/edit">
+                    Create a Course
+                </a>
+            </div>
+        </div>
+        
+            <div class="breadcrumb">
+                <a class="dark-links" href="/">All</a>
+                <img class="" src="/assets/hublms/icons/chevron-right.svg">
+                <span class="page-title breadcrumb-destination">Program 1</span>
+            </div>
+        <ul class="nav lms-nav" id="courses-tab">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#all">
+                    Courses
+                    <span class="course-list-count">
+                        1
+                    </span>
+                </a>
+            </li>
+           
+        </ul>
+        <div class="border-bottom mb-4"></div>
+        <div class="tab-content">
+            <!-- TABS -->
+            <div class="tab-pane active" id="all" role="tabpanel" aria-labelledby="all">
+                <div class="all_listtings">
+                    <div class="course-cards-parent cards-parent">
+                        <div class="common-card-style course-card" data-course="course-1" data-rating="0"
+                            data-enrollment="0" data-creation="2023-11-23 10:34:09.980434">
+                            <div class="course-image  default-image ">
+                                <div class="course-tags">
+                                    <div class="course-card-pills">test</div>
+                                    <div class="course-card-pills">tagslerem</div>
+                                </div>
+                                <div class="default-image-text">C1</div>
+                            </div>
+                            <div class="course-card-content">
+                                <div class="course-card-meta">
+                                    <div class="vertically-center">
+                                        <svg class="icon icon-md">
+                                            <use href="#icon-education"></use>
+                                        </svg>
+                                        1
+                                    </div>
+                                </div>
+                                <div class="course-card-title">
+                                    Course 1
+                                </div>
+                                <div class="short-introduction">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                    Ipsum.
+                                </div>
+                                <div class="course-card-footer">
+                                    <div class="course-card-instructors">
+                                        <div class="avatar-group overlap">
+                                            <span class="avatar avatar-small" title="Administrator">
+                                                <a class="button-links" href="/users/administrator">
+                                                    <span class="avatar-frame standard-image" title="Administrator"
+                                                        style="background-color: var(--dark-green-avatar-bg); color: var(--dark-green-avatar-color);">
+                                                        A
+                                                    </span>
+                                                </a>
+                                            </span>
+                                            <span class="avatar avatar-small" title="Francis">
+                                                <a class="button-links" href="/users/francis">
+
+                                                    <span class="avatar-frame standard-image" title="Francis"
+                                                        style="background-color: var(--red-avatar-bg); color: var(--red-avatar-color);">
+                                                        F
+                                                    </span>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <a class="button-links" href="/users/administrator">
+                                            <span class="course-instructor">
+                                                Administrator and Francis
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="course-price">
+                                        ₱ 10
+                                    </div>
+                                </div>
+                                <a class="stretched-link" href="/hublms/course/course-1"></a>
+                            </div>
+                        </div>
+                        <div class="common-card-style course-card" data-course="course-1" data-rating="0"
+                            data-enrollment="0" data-creation="2023-11-23 10:34:09.980434">
+                            <div class="course-image  default-image ">
+                                <div class="course-tags">
+                                    <div class="course-card-pills">test</div>
+                                    <div class="course-card-pills">tagslerem</div>
+                                </div>
+                                <div class="default-image-text">C2</div>
+                            </div>
+                            <div class="course-card-content">
+                                <div class="course-card-meta">
+                                    <div class="vertically-center">
+                                        <svg class="icon icon-md">
+                                            <use href="#icon-education"></use>
+                                        </svg>
+                                        1
+                                    </div>
+                                </div>
+                                <div class="course-card-title">
+                                    Course 2
+                                </div>
+                                <div class="short-introduction">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                    Ipsum.
+                                </div>
+                                <div class="course-card-footer">
+                                    <div class="course-card-instructors">
+                                        <div class="avatar-group overlap">
+                                            <span class="avatar avatar-small" title="Administrator">
+                                                <a class="button-links" href="/users/administrator">
+                                                    <span class="avatar-frame standard-image" title="Administrator"
+                                                        style="background-color: var(--dark-green-avatar-bg); color: var(--dark-green-avatar-color);">
+                                                        A
+                                                    </span>
+                                                </a>
+                                            </span>
+                                            <span class="avatar avatar-small" title="Francis">
+                                                <a class="button-links" href="/users/francis">
+
+                                                    <span class="avatar-frame standard-image" title="Francis"
+                                                        style="background-color: var(--red-avatar-bg); color: var(--red-avatar-color);">
+                                                        F
+                                                    </span>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <a class="button-links" href="/users/administrator">
+                                            <span class="course-instructor">
+                                                Administrator and Francis
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="course-price">
+                                        Free
+                                    </div>
+                                </div>
+                                <a class="stretched-link" href="/hublms/course/course-1"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

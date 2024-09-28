@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-18 07:22:53.090452",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "document",
+  "trigger",
+  "template",
+  "recipients"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Link",
+   "label": "Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "trigger",
+   "fieldtype": "Select",
+   "label": "Trigger",
+   "options": "Registration\nNew Quiz Submission\nQuiz Passed\nCertificate\nCourse Completion"
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "label": "Notification Template",
+   "options": "Notification"
+  },
+  {
+   "fieldname": "recipients",
+   "fieldtype": "Table",
+   "label": "Recipients",
+   "options": "User Email"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-12-18 08:24:17.928749",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Notifications",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

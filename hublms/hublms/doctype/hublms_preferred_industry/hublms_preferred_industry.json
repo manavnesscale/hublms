@@ -1,0 +1,36 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2023-11-23 07:49:29.234128",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "industry"
+ ],
+ "fields": [
+  {
+   "fieldname": "industry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Industry",
+   "options": "Industry",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-23 09:15:56.417977",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Preferred Industry",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

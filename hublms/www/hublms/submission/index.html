@@ -1,0 +1,144 @@
+{% extends "templates/hublms.html" %}
+
+{% from "www/macros/livecode.html" import LiveCodeEditorJS, LiveCodeEditor with context %}
+
+{% block content %}
+
+
+
+{% block head_include %}
+<link rel="stylesheet" href="/assets/frappe/css/hljs-night-owl.css">
+{% endblock %}
+
+
+{% block page_content %}
+
+{% if not hide_quiz %}
+<style>
+    .modal-dialog {
+        max-width: 75% !important;
+    }
+</style>
+<body>
+
+<div class="common-page-style">
+    <div class="container course-details-page">
+        <div>
+            <!-- Lesson Content -->
+                <form id="quiz-form" class="common-card-style column-card ">
+                    <div class="text-center">
+                        <div class="bold-heading" id="quiz-title" data-max-attempts="{{ quiz.max_attempts }}"
+                            data-name="{{ quiz.name }}" data-show-answers="{{ quiz.show_answers }}">
+                            {{ quiz.title }}
+                        </div>
+                        <div class="bold-heading">
+                            Score : {{ submission.score }}/{{ quiz.subset }}
+                        </div>
+                        <div class="col grid-static-col">
+                            <button class='btn btn-info' id="downloadPdf" onclick="event.preventDefault();">{{ _("Download PDF") }}</button>
+                        </div>
+                    </div>
+                    <div class="questions">
+                    {% for question in quiz.questions %}
+                    
+                    <div class="question " data-is_correct="{{question.is_correct}}"  data-name="{{ question.name }}" data-type="{{ question.type }}"
+                        data-multi="{{ question.multiple }}" data-qt-index="{{ loop.index }}">
+                        <div>
+                            <div class="question-text">
+                                {{ question.question }} 
+                            </div>
+                        </div>
+                        
+                        {% if question.type == "Choices" %}
+                        {% set options = [question.option_1, question.option_2, question.option_3, question.option_4] %}
+                        {% for option in options %}
+                            {% if option %}
+                            <div class="mb-2">
+                                <div class="custom-checkbox">
+                                    <label class="option-row">
+                                    <input class="option hide" value="{{ option | urlencode }}"
+                                        
+
+                                        {% if question.answer == option %}  checked {% endif %}
+                                        {% if question.multiple %} type="checkbox" {% else %} type="radio" name="{{ question.question | urlencode }}" {% endif %}>
+                                    <div class="option-text">
+                                        <div>
+                                            {% set vars = {'correct': 'None'} %}
+                                            {% for answer in answers %}
+                                                {% if frappe.utils.md_to_html(answer.answer) == frappe.utils.md_to_html(option)   %}
+                                                    {% if answer.is_correct %}
+                                                        {% if vars.update({'correct': "Correct"}) %} {% endif %}
+                                                    {% else %}
+                                                        {% if vars.update({'correct': "Wrong"}) %} {% endif %}
+                                                    {% endif %}
+                                                    
+                                                {% endif %}
+                                                
+                                            {% endfor %}
+                                            
+                                            {# Now, correct is accessible outside the loop #}
+
+                                            {% if vars.correct == "Correct" %}
+                                                <img class="d-inline mr-3" src="/assets/hublms/icons/check.svg">
+                                            {% elif vars.correct == "Wrong" %}
+                                                <img class="d-inline mr-3" src="/assets/hublms/icons/wrong.svg">
+                                            {% else %}
+                                                <img class="d-inline mr-3" src="/assets/hublms/icons/minus-circle.svg">
+                                            {% endif %}
+                                        
+                                        
+                                        {{frappe.utils.md_to_html(option)}}
+                                        
+                                        </div>
+
+                                    </div>
+                                    
+
+                                    </label>
+                                </div>
+            
+                            {% set explanation = question['explanation_' + loop.index | string] %}
+                            {% if explanation %}
+                                <small class="explanation ml-10 hide">{{ explanation }}</small>
+                            {% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+            
+                        {% else %}
+                        <div class="control-input-wrapper">
+                            <div class="control-input">
+                                <textarea type="text" autocomplete="off" class="input-with-feedback form-control bold possibility mt-4" style="height: 150px;" spellcheck="false"></textarea>
+                            </div>
+                        </div>
+                        {% endif %}
+            
+                    </div>
+                    {% endfor %}
+                    </div>
+            
+                    <div class="quiz-footer">
+                        <button class="btn btn-secondary btn-sm {% if quiz.show_answers %} hide {% endif %}" id="next" disabled>
+                            {{ _("Next Question") }}
+                        </button>
+                        <button class="btn btn-secondary btn-sm hide" id="summary">
+                            {{ _("Submit") }}
+                        </button>
+                        <button class="btn btn-secondary btn-sm mx-auto hide" id="try-again" data-quiz="{{ quiz.name }}">
+                            {{ _("Try Again") }}
+                        </button>
+                    </div>
+                </form>
+                
+                
+        </div>
+    </div>
+</div>
+</body>
+
+
+{% endif %}
+
+
+{% endblock %}
+{% endblock %}

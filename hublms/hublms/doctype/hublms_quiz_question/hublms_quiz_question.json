@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "creation": "2023-11-23 00:35:46.977597",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "question",
+  "marks"
+ ],
+ "fields": [
+  {
+   "fieldname": "question",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Question",
+   "options": "Hublms Question",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "marks",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Marks",
+   "non_negative": 1,
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-23 10:02:38.014485",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Quiz Question",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

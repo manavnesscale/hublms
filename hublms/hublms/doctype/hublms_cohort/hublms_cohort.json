@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{course}/{slug}",
+ "creation": "2023-11-23 07:45:39.763416",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "course",
+  "title",
+  "slug",
+  "section_break_2",
+  "instructor",
+  "status",
+  "column_break_4",
+  "begin_date",
+  "end_date",
+  "duration",
+  "section_break_8",
+  "description",
+  "pages"
+ ],
+ "fields": [
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Course",
+   "options": "Hublms Course",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Slug",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "instructor",
+   "fieldtype": "Link",
+   "label": "Instructor",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Upcoming\nLive\nCompleted\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "begin_date",
+   "fieldtype": "Date",
+   "label": "Begin Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Markdown Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "pages",
+   "fieldtype": "Table",
+   "label": "Pages",
+   "options": "Cohort Web Page"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Links",
+   "link_doctype": "Hublms Cohort Subgroup",
+   "link_fieldname": "cohort"
+  }
+ ],
+ "modified": "2023-11-23 09:15:57.650469",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Cohort",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

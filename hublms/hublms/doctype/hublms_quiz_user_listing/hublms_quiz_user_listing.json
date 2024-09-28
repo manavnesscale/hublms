@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-22 08:16:40.707063",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "attempt_no",
+  "score",
+  "total",
+  "percent_grade",
+  "status",
+  "button_fjrh"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Student"
+  },
+  {
+   "fieldname": "attempt_no",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Attempt No."
+  },
+  {
+   "fieldname": "score",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Score"
+  },
+  {
+   "fieldname": "percent_grade",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Percent Grade"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "button_fjrh",
+   "fieldtype": "Button",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "View Submission"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Data",
+   "label": "Total"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-22 08:21:30.228813",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Quiz User Listing",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

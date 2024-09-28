@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-22 08:07:19.957379",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "column_break_krdn",
+  "student",
+  "new_quiz_submission",
+  "quiz_completed",
+  "quiz_not_yet_attempted",
+  "new_assignment_submission",
+  "assignment_completed",
+  "assignment_not_yet_submitted"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Student"
+  },
+  {
+   "fieldname": "new_quiz_submission",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "New Quiz Submission"
+  },
+  {
+   "fieldname": "quiz_completed",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Quiz Completed"
+  },
+  {
+   "fieldname": "quiz_not_yet_attempted",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Quiz not yet Attempted"
+  },
+  {
+   "fieldname": "new_assignment_submission",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "New Assignment Submission"
+  },
+  {
+   "fieldname": "assignment_completed",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Assignment Completed"
+  },
+  {
+   "fieldname": "assignment_not_yet_submitted",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Assignment not yet submitted"
+  },
+  {
+   "fieldname": "column_break_krdn",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-22 08:10:14.417176",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Gradebook",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

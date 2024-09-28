@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap">
+    <div style="background-color: #f0f0f0; font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center;">
+
+        <div style="max-width: 600px; margin: 20px auto; background-color: #808080; padding: 20px;   text-align: left;">
+            <img src="http://sharetree.agilesystem.org/files/Logo - Copy.png" alt="Logo" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+            
+            
+            <div style="text-align: center; color: #fff; font-size: 30px; font-family: 'Raleway', sans-serif;font-weight: 800;">
+                
+                Need further </br>
+                support?
+                
+            </div>
+            <!-- p style="text-align: right; color: #fff; font-size: 18px; font-family: 'Raleway', sans-serif;font-weight: 800;">
+                Login to
+                <a href="" style='text-decoration: none; color: #99c268 ; font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;'>Sharetree Academy</span>
+            </p> -->
+            <div style='color: #99c268 ; font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;'>
+                <p style="text-align: right; color: #fff; ">
+                    Attend a
+                    <a href="" style="  text-decoration: none;  color: #99c268; ">Practical</a><br>
+                    <span href="" style="  text-decoration: none;  color: #99c268; ">session</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                </p>
+                <p style="text-align: right; color: #fff; ">
+                </p>
+            </div>
+        </div>
+        <div style="max-width: 600px; margin: 20px auto;  padding: 20px;   text-align: left;">
+
+
+            <p> 
+            Welcome {{ doc.member }},
+            </p> 
+            <p> 
+
+            Here are some actions to take to support your online learning:
+            </p>
+
+            <ul>
+                <li>
+                    Download the Emotional Pulse App and begin tracking your daily emotions: https://sharetree.org/jointhepulse/
+                </li>
+                <li>
+                    <p>
+                    Attend the public program's two Practical 2–3-hour sessions, included in this program. Check the upcoming sessions for Mental Health First Responders here: https://sharetree.org/sharetree-events/
+                    </p>
+                    <p>
+                    Please note: Your program purchase gives you lifelong access to our public workshops. Simply select the free "Refresher" ticket option and enrol as a complimentary refresher whenever you'd like.
+                    </p>
+                </li>
+                <li>
+                    Deployment, Support, and Coaching:
+                    <p>
+                        As part of the program, you have the following resources available to you:
+                    </p>
+                    <ul>
+                        <li>
+                            Receive 1x Team LIFT workshop Co-Facilitation Credit, allowing you to initiate a Wellbeing Improvement Project and achieve your skills certification.
+                        </li>
+                        <li>
+                            Access 45 minutes of coaching support, which you can schedule at any time for whatever you need: https://calendly.com/steven-farrugia/45-minute-scope-strategy-anytime
+                        </li>
+                    </ul>
+                </li>
+               
+            </ul>
+
+            <p>
+
+            We look forward to seeing the results of your expanded knowledge and assisting you in making real changes, in cultures that care about mental health and wellbeing.
+            </p>
+            
+            <p> 
+            with Gratitude,
+            </p>
+
+        </div>
+        <div style="max-width: 600px; margin: 20px auto; background-color: #808080; padding: 20px;   text-align: left;">
+            <p> 
+
+            Czarina Madayag | Communications, Marketing and Grants Coordinator| ShareTree.org
+            Service | Innovation | Excellence
+            </p> 
+
+            <p> 
+
+            Working days: Tuesday – Friday 8am-4pm 
+            </p> 
+
+            We’re committed to Mental Health & Wellbeing. Join us - https://www.sharetree.org/jointhepulse
+            <p> 
+
+            260A Blackburn Road, Glen Waverley VIC 3150 |
+            M: +61 42 068 7707|E: mailto:czarina@sharetree.org
+            </p>
+
+
+            Please join me on Emotional Pulse
+
+        </div>
+
+    </div>

@@ -1,0 +1,197 @@
+{% extends "hublms/templates/hublms_base.html" %}
+{% from "www/macros/livecode.html" import LiveCodeEditorJS, LiveCodeEditor with context %}
+
+
+{% block title %}
+{{ topic }} - {{ course.title }}
+
+{% endblock %}
+
+{% block head_include %}
+<link rel="stylesheet" href="/assets/frappe/css/hljs-night-owl.css">
+{% for ext in page_extensions %}
+{{ ext.render_header() }}
+{% endfor %}
+{% endblock %}
+
+
+{% block page_content %}
+
+<div class="common-page-style">
+    <div class="container course-details-page">
+
+        <div class="course-content-parent">
+            <div>
+                <div class="bold-heading mb-4">
+                    {{ course.title }}
+                </div>
+
+
+                {% if membership %}
+                <div class="">
+                    <div class="progress-percent m-0">{{ progress }}% {{ _("Completed") }}</div>
+                    <div class="progress" title="{{ progress }}% Completed">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}"
+                        aria-valuemin="0" aria-valuemax="100" style="width:{{ progress }}%">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="course-details-outline">
+                    {% set classname = class_info.name if class_info else False %}
+                    {{ widgets.CourseOutline(course=course, membership=membership, lesson_page=True, classname=classname,content_index=content_index,topic_index=topic_index) }}
+                </div>
+            </div>
+            <div class="lesson-parent">
+                {{ BreadCrumb(course, topic, class_info) }}
+                {{ LessonContent(topic, class_info) }}
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- BreadCrumb -->
+{% macro BreadCrumb(course, topic, class_info) %}
+<div class="breadcrumb">
+    {% if class_info %}
+        <a class="dark-links" href="/hublms">
+            {{ _("All Items") }}
+        </a>
+        <img class="ml-1 mr-1" src="/assets/hublms/icons/chevron-right.svg">
+        <a class="dark-links" href="/batches/{{ class_info.name }}">
+            {{ class_info.title }}
+        </a>
+        <img class="ml-1 mr-1" src="/assets/hublms/icons/chevron-right.svg">
+        <span class="breadcrumb-destination">
+            {{ topic }}
+        </span>
+    {% else %}
+        <a class="dark-links" href="/hublms">
+            {{ _("All Courses") }}
+        </a>
+        <img class="ml-1 mr-1" src="/assets/hublms/icons/chevron-right.svg">
+        <a class="dark-links" href="/hublms/course/{{ course.name }}">
+            {{ course.title }}
+        </a>
+        <img class="ml-1 mr-1" src="/assets/hublms/icons/chevron-right.svg">
+        <span class="breadcrumb-destination">
+            {{  topic }}
+            
+        </span>
+    {% endif %}
+</div>
+{% endmacro %}
+
+<!-- Lesson Details -->
+{% macro LessonContent(topic, class_info) %}
+{% set instructors = get_instructors(course.name) %}
+{% set is_instructor = is_instructor(course.name) %}
+
+<div>
+    <div>
+        <div class="pull-right">
+            {% if topics | length %}
+            {% if get_progress(course.name, topic_content) == 'Complete' %}
+            <span id="status-indicator" class="indicator-pill green">{{ _("COMPLETED") }}</span>
+            {% endif %}
+            {% endif %}
+
+            <!-- Edit Button -->
+            <!-- {% if (is_instructor or has_course_moderator_role()) %}
+            <a class="btn btn-secondary btn-sm ml-2" href="{{ get_lesson_url(course.name, lesson_number) }}/edit">
+                {{ _("Edit") }}
+            </a>
+            {% endif %} -->
+        </div>
+        <div class="course-home-headings title {% if membership %} is-member {% endif %}" id="title"
+            data-index="{{ content_index }}" data-course="{{ course.name }}" data-chapter="{{ topic }}"
+            {% if topic_content %} data-lesson="{{ topic_content }}" data-topic="{{ topic }}" {% endif %}
+            >{% if topic_content %}{{ topic_content }}{% endif %}</div>
+    </div>
+
+    <!-- Instructors -->
+    <div class="d-flex align-items-center">
+        {% set ins_len = instructors | length %}
+        {% for instructor in instructors %}
+        {% if ins_len > 1 and loop.index == 1 %}
+        <div class="avatar-group overlap">
+        {% endif %}
+        {{ widgets.Avatar(member=instructor, avatar_class="avatar-small") }}
+
+        {% if ins_len > 1 and loop.index == ins_len %}
+        </div>
+        {% endif %}
+        {% endfor %}
+        <a class="button-links ml-1" href="{{ get_profile_url(instructors[0].username) }}">
+        <span class="course-meta">
+            {% if ins_len == 1 %}
+                {{ instructors[0].full_name }}
+            {% elif ins_len == 2 %}
+                {{ instructors[0].full_name.split(" ")[0] }} and {{ instructors[1].full_name.split(" ")[0] }}
+            {% else %}
+                {% set suffix = "other" if ins_len - 1 == 1 else "others"  %}
+                {{ instructors[0].full_name.split(" ")[0] }} and {{ ins_len - 1 }} {{ suffix }}
+            {% endif %}
+        </span>
+        </a>
+        <div class="ml-5 course-meta">
+            {{ frappe.utils.format_date(creation, "medium") }}
+        </div>
+    </div>
+    {{ pagination(prev_url, next_url) }}
+
+    <!-- Lesson Content -->
+    <div class="markdown-source lesson-content-card">
+        {% if show_lesson %}
+
+            <div id="current-lesson-content" class="">
+            {{ render_html(topic,content_index) }}
+
+            </div>
+        {% else %}
+            {% set course_link = "<a class='enroll-in-course' data-course=" + course.name | urlencode + " href=''>" + _('here') +  "</a>" %}
+            <div class="alert alert-info mb-0">
+                {{ _("There is no preview available for this lesson.
+                Please join the course to access it.
+                Click {0} to enroll.").format(course_link) }}
+            </div>
+        {% endif %}
+    </div>
+
+
+</div>
+{% endmacro %}
+
+<!-- Pagination -->
+{% macro pagination(prev_url, next_url) %}
+    {% if prev_url or next_url %}
+    <div class="lesson-pagination">
+        {% if prev_url %}
+        <a class="btn btn-secondary btn-sm prev" href="{{ prev_url }}">
+            {{ _("Previous Content") }}
+        </a>
+        {% endif %}
+
+        {% if next_url %}
+        <a class="btn btn-primary btn-sm next pull-right" href="{{ next_url }}">
+            {{ _("Next Content") }}
+        </a>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endmacro %}
+
+{%- block script %}
+    {{ super() }}
+    {{ include_script('controls.bundle.js') }}
+    <script type="text/javascript">
+        var page_context = {{ page_context | tojson }};
+        {% include "hublms/templates/quiz/quiz.js" %}
+    </script>
+    {% for ext in page_extensions %}
+    {{ ext.render_footer() }}
+    {% endfor %}
+{%- endblock %}

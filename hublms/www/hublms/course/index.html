@@ -1,0 +1,415 @@
+{% extends "hublms/templates/hublms_base.html" %}
+{% block title %}
+{{ _("New Course") }}
+{% endblock %}
+
+<style>
+   body{
+    height:2000px;
+    width: 100%;
+    margin:0;
+    padding:0;
+    }
+
+    .scroller-left{
+        position: fixed;
+        left: 0;
+        background:#CCC;
+    }
+
+    .scroller-right{
+        
+    }
+</style>
+
+{% block page_content %}
+<div class="course-home-top-container">
+
+    <!-- <div class="course-head-container">
+        <div class="container">
+            <div class="course-card-wide">
+
+                <div class="breadcrumb">
+                    <a class="dark-links" href="/">All</a>
+                    <img class="" src="/assets/hublms/icons/chevron-right.svg">
+                    <span class="breadcrumb-destination">Course 1</span>
+                </div>
+
+
+                <div class="d-flex align-items-center mt-8">
+
+                </div>
+
+                <div id="title" class="page-title">
+                    Course 1
+                </div>
+
+                <div id="intro">
+
+                    Intro to coure 1
+
+                </div>
+
+
+                <div class="avg-rating-stars">
+                    <div class="rating">
+
+                        <svg class="icon icon-lg " data-rating="1">
+                            <use href="#icon-star"></use>
+                        </svg>
+
+                        <svg class="icon icon-lg " data-rating="2">
+                            <use href="#icon-star"></use>
+                        </svg>
+
+                        <svg class="icon icon-lg " data-rating="3">
+                            <use href="#icon-star"></use>
+                        </svg>
+
+                        <svg class="icon icon-lg " data-rating="4">
+                            <use href="#icon-star"></use>
+                        </svg>
+
+                        <svg class="icon icon-lg " data-rating="5">
+                            <use href="#icon-star"></use>
+                        </svg>
+
+                    </div>
+                </div>
+
+
+                <div class="mt-2">
+                    <div class="bold-heading">Instructors:</div>
+
+                    <div class="mt-1">
+
+                        <span class="avatar avatar-small" title="Francis">
+                            <a class="button-links" href="/users/francis">
+
+                                <span class="avatar-frame standard-image" title="Francis"
+                                    style="background-color: var(--red-avatar-bg); color: var(--red-avatar-color);">
+                                    F
+                                </span>
+
+                            </a>
+                        </span>
+                        <a class="button-links" href="/users/francis">
+                            <span class="course-instructor"> Francis </span>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div> -->
+    <div class="course-head-container">
+        <div class="container">
+            <div class="course-card-wide">
+                <div class="breadcrumb">
+                    <a class="dark-links" href="/hublms">{{ _("All Items") }}</a>
+                    <img class="" src="/assets/hublms/icons/chevron-right.svg">
+                    <span class="breadcrumb-destination">{{ course.title if course.title else _("New Course") }}</span>
+                </div>
+                <div class="d-flex align-items-center mt-8">
+                    {% for tag in get_tags(course.name) %}
+                    <div class="course-card-pills">
+                        {{ tag }}
+                    </div>
+                    {% endfor %}
+                </div>
+            
+                <div id="title" class="page-title">
+                    {{ course.title }}
+                </div>
+            
+                <div id="intro">
+                    {% if course.short_introduction %}
+                    {{ course.short_introduction }}
+                    {% endif %}
+                </div>
+            
+                {% if not course.upcoming %}
+                <div class="avg-rating-stars">
+                    <div class="rating">
+                        {% for i in [1, 2, 3, 4, 5] %}
+                        <svg class="icon icon-lg {% if i <= frappe.utils.ceil(avg_rating) %} star-click {% endif %}" data-rating="{{ i }}">
+                            <use href="#icon-star"></use>
+                        </svg>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            
+                <div class="mt-2">
+                    <div class="bold-heading">{{ _("Instructors") }}:</div>
+                    {% for instructor in get_instructors(course.name) %}
+                    <div class="mt-1">
+                        {{ widgets.Avatar(member=instructor, avatar_class="avatar-small") }}
+                        <a class="button-links" href="{{ get_profile_url(instructor.username) }}">
+                            <span class="course-instructor"> {{ instructor.full_name }} </span>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            
+                {% if membership %}
+                {% set progress = frappe.utils.cint(membership.progress) %}
+                <div class="mt-8">
+                    <div class="progress-percent m-0">{{ progress }}% {{ _("Completed") }}</div>
+                    <div class="progress" title="{{ progress }}% Completed">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}"
+                        aria-valuemin="0" aria-valuemax="100" style="width:{{ progress }}%">
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="course-home-page">
+        <div class="container">
+
+            <div class="course-overlay-card" style = "position: fixed;
+                right: 10;">
+
+                
+                <div class="course-image {% if not course.image %} default-image {% endif %}"
+                {% if course.image %} style="background-image: url( {{ course.image | urlencode }} );" {% endif %}>
+                    <div class="course-tags">
+                    {% for tag in get_tags(course.name) %}
+                        <div class="course-card-pills">{{ tag }}</div>
+                    {% endfor %}
+                    
+
+                    </div>
+                    {% if (course.video_link)  %}
+                        <iframe class="preview-video" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/{{ course.video_link }}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    {% elif (not course.image) and (not course.video_link) %}
+                        <div class="default-image-text">{{ course.title[0] }}</div>
+                    {% endif %}
+                </div>
+        
+                <div class="course-overlay-content">
+        
+                    <div class="all-cta mb-3">
+
+                        <div class="btn btn-primary wide-button enroll-in-hublms-course" data-hublms-course="{{course.title}}">
+                            Start Learning
+                        </div>
+
+                    </div>
+        
+                    <div id="interest-alert" class="{% if not is_user_interested %} hide {% endif %}">
+                        {{ _("You have opted to be notified for this course. You will receive an email when the course becomes available.") }}
+                    </div>
+                
+                    {% if course.status == "Under Review" and is_instructor %}
+                    <div class="mb-4">
+                        {{ _("This course is currently under review. Once the review is complete, the System Admins will publish it on the website.") }}
+                    </div>
+                    {% endif %}
+                
+                    {% if no_of_attempts and no_of_attempts >= course.max_attempts %}
+                    <p>
+                        {{ _("You have exceeded the maximum number of attempts allowed to appear for evaluations of this course.") }}
+                    </p>
+                    {% endif %}
+        
+                    {% if course.paid_course %}
+                    <div class="vertically-center mb-3 bold-heading">
+                        {{ frappe.utils.fmt_money(course.course_price, 0, course.currency)  }}
+                    </div>
+                    {% endif %}
+        
+                    <div class="vertically-center mb-3">
+                        <svg class="icon icon-md mr-1">
+                            <use class="" href="#icon-users">
+                        </svg>
+                        {{ format_number(get_students(course.name) | length) }} {{ _("Enrolled") }}
+                    </div>
+        
+                    <div class="vertically-center mb-3">
+                        <svg class="icon icon-md mr-1">
+                            <use href="#icon-education"></use>
+                        </svg>
+                        {{ get_topics(course.name) | count }} {{ _("Lessons") }}
+                    </div>
+        
+                </div>
+            </div>
+
+
+            <div class="course-body-container">
+
+                <div class="course-description-section">
+                    {{ course.description }}
+                </div>
+
+
+
+
+                
+                {{ widgets.CourseOutline(course=course, membership=membership, is_user_interested=is_user_interested) }}
+                    {% if course.status == "Approved" and not frappe.utils.cint(course.upcoming) %}
+                        {% include "lms/templates/reviews.html" %}
+                    {% endif %}
+
+
+
+                <!-- No Preview Modal -->
+                <div class="modal fade no-preview-modal" id="no-preview-modal" tabindex="-1" role="dialog"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <div class="modal-title">Not Available for Preview</div>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="">
+                                    This lesson is not available for preview. Please join the course to access it.
+                                </div>
+
+                            </div>
+
+
+                            <div class="modal-footer">
+
+                                <button class="btn btn-secondary btn-sm pull-right mr-2" data-dismiss="modal"
+                                    aria-label="Close">
+                                    Discard
+                                </button>
+
+
+                                <button class="btn btn-primary btn-sm enroll-in-course pull-right"
+                                    data-course="course-1">
+                                    Start Learning
+                                </button>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="reviews-parent">
+
+                    <div class="page-title mb-5"> Reviews </div>
+
+
+
+
+
+
+                    <div class="empty-state">
+                        <img class="icon icon-xl" src="/assets/hublms/icons/comment.svg">
+                        <div class="empty-state-text">
+                            <div class="empty-state-heading">Review the course</div>
+                            <div class="course-meta">Help us improve our course material.</div>
+                            <div class="mt-2">
+
+                                <a class="btn btn-secondary btn-sm" href="/login?redirect-to=/courses/course-1">
+                                    Write a review
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal fade review-modal" id="review-modal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="modal-title">Write a Review</div>
+                            </div>
+
+
+                            <div class="modal-body">
+                                <form class="review-form" id="review-form">
+                                    <div class="form-group">
+                                        <div class="clearfix">
+                                            <label class="control-label reqd" style="padding-right: 0px;">Rating</label>
+                                        </div>
+                                        <div class="control-input-wrapper">
+                                            <div class="control-input">
+                                                <div class="rating rating-field" id="rating">
+
+                                                    <svg class="icon icon-md icon-rating" data-rating="1">
+                                                        <use href="#icon-star"></use>
+                                                    </svg>
+
+                                                    <svg class="icon icon-md icon-rating" data-rating="2">
+                                                        <use href="#icon-star"></use>
+                                                    </svg>
+
+                                                    <svg class="icon icon-md icon-rating" data-rating="3">
+                                                        <use href="#icon-star"></use>
+                                                    </svg>
+
+                                                    <svg class="icon icon-md icon-rating" data-rating="4">
+                                                        <use href="#icon-star"></use>
+                                                    </svg>
+
+                                                    <svg class="icon icon-md icon-rating" data-rating="5">
+                                                        <use href="#icon-star"></use>
+                                                    </svg>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="clearfix">
+                                            <label class="control-label reqd" style="padding-right: 0px;">Review</label>
+                                        </div>
+                                        <div class="control-input-wrapper">
+                                            <div class="control-input">
+                                                <textarea type="text" autocomplete="off"
+                                                    class="input-with-feedback form-control review-field"
+                                                    data-fieldtype="Text" data-fieldname="feedback_comments"
+                                                    spellcheck="false"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="error-field muted-text"></p>
+                                </form>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary btn-sm mr-2" data-dismiss="modal" aria-label="Close">
+                                    Discard
+                                </button>
+
+                                <button class="btn btn-primary btn-sm" data-course="course-1" id="submit-review">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% set topics = get_topics(course.name) %}
+{% set is_instructor = is_instructor(course.name) %}
+
+{% if topics | length %}
+<div class="course-home-outline">
+
+    {% if not lesson_page %}
+    <div class="page-title mb-8" id="outline-heading" data-course="{{ course.name }}">
+        {{ _("Course Content") }}
+    </div>
+
+    
+    {% endif %}
+
+    {% if topics | length %}
+    <div>
+    {% for topic in topics %}
+    {% set topic_content = get_topic_contents(course.name, topic) %}
+
+    <div class="chapter-parent" data-chapter="{{ topic.name }}">
+
+        <div class="chapter-title" data-toggle="collapse" aria-expanded="false"
+        data-target="#{{ get_slugified_chapter_title(topic.name) }}">
+
+            <img class="chapter-icon" src="/assets/hublms/icons/chevron-right.svg">
+            <div class="chapter-title-main">
+                {{ topic.name }}
+            </div>
+            
+
+            
+            
+        </div>
+
+
+        <div class="chapter-content collapse navbar-collapse" id="{{ get_slugified_chapter_title(topic.name) }}">
+
+            {% if topic.description %}
+            <div class="chapter-description">
+                {{ topic.description }}
+            </div>
+            {% endif %}
+
+            <div class="lessons">
+
+            {% if topic_content | length %}
+
+                {% for content in topic_content %}
+                {% set url_index =  "{}{}{}".format(topic.idx,'.', content.idx) %}
+                {% set active =  "{}{}{}".format(topic_index,'.', content_index) == "{}{}{}".format(topic.idx,'.', content.idx) %}
+                
+                <div data-lesson="{{ content.content }}" class="lesson-info {% if active %} active-lesson {% endif %}">
+
+                    <a class="lesson-links"
+                    href="{{ get_lesson_url(course.name, url_index) }}">
+
+                        <svg class="icon icon-sm mr-2">
+                            <use class="" href="#{{ content.icon }}">
+                        </svg>
+                        <div class="text-truncate" title="{{ content.content }}">{{ content.content | truncate(20) }}</div>
+                        {% if membership %}
+                        <svg class="icon icon-md lesson-progress-tick ml-auto {{ get_progress(course.name, content.content) != 'Complete' and 'hide' }}">
+                            <use class="" href="#icon-success">
+                        </svg>
+                        {% endif %}
+
+                    </a>
+                </div>
+
+                {% endfor %}
+
+            {% endif %}
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+    {% endif %}
+
+</div>
+{% endif %}
+
+{% if chapters | length %}
+<!-- No Preview Modal -->
+{{ widgets.NoPreviewModal(course=course, membership=membership) }}
+
+{% endif %}

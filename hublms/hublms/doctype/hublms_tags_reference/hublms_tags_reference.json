@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-30 09:33:53.754919",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tag"
+ ],
+ "fields": [
+  {
+   "fieldname": "tag",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tag",
+   "options": "Hublms Tags"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-09 05:37:02.981740",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Tags Reference",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-21 08:23:29.272460",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "statistics"
+ ],
+ "fields": [
+  {
+   "fieldname": "statistics",
+   "fieldtype": "Link",
+   "label": "Statistics",
+   "options": "Hublms Students Stats"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-21 08:23:29.272460",
+ "modified_by": "Administrator",
+ "module": "Hublms",
+ "name": "Hublms Students Stats Reference",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

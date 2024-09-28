@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="frappe">
+    {% block favicon %}
+	<link
+		rel="shortcut icon"
+		href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
+		type="image/x-icon"
+	>
+	{% endblock %}
+    <style>
+        body {
+            
+            margin: 0;
+            display: flex;
+            box-sizing: border-box;
+            position: relative; /* Add this line to set the position of the body */
+        }
+        .certificate-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('http://lms.test:8010{{background_image}}');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            border: 4px double #000;
+            box-sizing: border-box;
+        }
+        .text-container {
+            position: absolute;
+            box-sizing: border-box;
+        }
+        
+    </style>
+    <script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ (frappe.socketio_port or 9000) }};
+		window.show_language_picker = {{ show_language_picker or 'false' }};
+	</script>
+    {%- block footer -%}
+    {{ web_block(
+        footer_template or 'Standard Footer',
+        values=_context_dict,
+        add_container=0,
+        add_top_padding=0,
+        add_bottom_padding=0
+    ) }}
+{%- endblock -%}
+
+{% block base_scripts %}
+<!-- js should be loaded in body! -->
+<script>
+    frappe.boot = {{ boot }}
+    // for backward compatibility of some libs
+    frappe.sys_defaults = frappe.boot.sysdefaults;
+</script>
+{{ include_script('frappe-web.bundle.js') }}
+{% endblock %}
+
+{%- for link in web_include_js %}
+{{ include_script(link) }}
+{%- endfor -%}
+
+{%- block script %}
+    {% if colocated_js -%}
+        <script>{{ colocated_js }}</script>
+    {%- endif %}
+{%- endblock %}
+<!-- csrf_token -->
+{%- block body_include %}{{ body_include or "" }}{% endblock -%}
+</head>
+<body>
+    <div class="certificate-content">
+        {% for item in items %}
+        <div class="text-container" style="
+            left: {{item.position_x}}px;
+            top: {{item.position_y}}px;
+            font-size: {{item.font_size}}px;
+            color: {{item.font_color}};
+            padding: 10px;
+        ">  
+            {% if item.image %}
+            <img src="{{item.image}}" style="width: 100%; height: auto;">
+            {% endif %}
+            {% if item.text %}
+            {{item.text}}
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        // Get the orientation from the template variable
+        var orientation = '{{orientation}}';
+        // Check orientation and adjust dimensions accordingly
+        if (orientation == 'Horizontal') {
+            document.body.style.height = '794px';
+            document.body.style.width = '1123px';
+        } else {
+            document.body.style.height = '1123px';
+            document.body.style.width = '794px';
+        }
+    </script>
+</body>
+</html>

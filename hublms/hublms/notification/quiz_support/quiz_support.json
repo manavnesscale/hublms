@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.percentage >= 50 and doc.percentage < 75",
+ "creation": "2024-03-05 09:25:57.326338",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Hublms Quiz Submission",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "\n    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap\">\n    <div style=\"background-color: #f0f0f0; font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center;\">\n\n        <div style=\"max-width: 600px; margin: 20px auto; background-color: #808080; padding: 20px;   text-align: left;\">\n            <img src=\"http://sharetree.agilesystem.org/files/Logo - Copy.png\" alt=\"Logo\" style=\"max-width: 100%; height: auto; margin-bottom: 20px;\">\n            \n            \n            <div style=\"text-align: center; color: #fff; font-size: 30px; font-family: 'Raleway', sans-serif;font-weight: 800;\">\n                \n                Need further </br>\n                support?\n                \n            </div>\n            <!-- p style=\"text-align: right; color: #fff; font-size: 18px; font-family: 'Raleway', sans-serif;font-weight: 800;\">\n                Login to\n                <a href=\"\" style='text-decoration: none; color: #99c268 ; font-family: \"Century Gothic\", CenturyGothic, AppleGothic, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;'>Sharetree Academy</span>\n            </p> -->\n            <div style='color: #99c268 ; font-family: \"Century Gothic\", CenturyGothic, AppleGothic, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;'>\n                <p style=\"text-align: right; color: #fff; \">\n                    Attend a\n                    <a href=\"\" style=\"  text-decoration: none;  color: #99c268; \">Practical</a><br>\n                    <span href=\"\" style=\"  text-decoration: none;  color: #99c268; \">session</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n\n                </p>\n                <p style=\"text-align: right; color: #fff; \">\n                </p>\n            </div>\n        </div>\n        <div style=\"max-width: 600px; margin: 20px auto;  padding: 20px;   text-align: left;\">\n\n\n            <p> \n            Welcome {{ doc.member }},\n            </p> \n            <p> \n\n            Here are some actions to take to support your online learning:\n            </p>\n\n            <ul>\n                <li>\n                    Download the Emotional Pulse App and begin tracking your daily emotions: https://sharetree.org/jointhepulse/\n                </li>\n                <li>\n                    <p>\n                    Attend the public program's two Practical 2\u20133-hour sessions, included in this program. Check the upcoming sessions for Mental Health First Responders here: https://sharetree.org/sharetree-events/\n                    </p>\n                    <p>\n                    Please note: Your program purchase gives you lifelong access to our public workshops. Simply select the free \"Refresher\" ticket option and enrol as a complimentary refresher whenever you'd like.\n                    </p>\n                </li>\n                <li>\n                    Deployment, Support, and Coaching:\n                    <p>\n                        As part of the program, you have the following resources available to you:\n                    </p>\n                    <ul>\n                        <li>\n                            Receive 1x Team LIFT workshop Co-Facilitation Credit, allowing you to initiate a Wellbeing Improvement Project and achieve your skills certification.\n                        </li>\n                        <li>\n                            Access 45 minutes of coaching support, which you can schedule at any time for whatever you need: https://calendly.com/steven-farrugia/45-minute-scope-strategy-anytime\n                        </li>\n                    </ul>\n                </li>\n               \n            </ul>\n\n            <p>\n\n            We look forward to seeing the results of your expanded knowledge and assisting you in making real changes, in cultures that care about mental health and wellbeing.\n            </p>\n            \n            <p> \n            with Gratitude,\n            </p>\n\n        </div>\n        <div style=\"max-width: 600px; margin: 20px auto; background-color: #808080; padding: 20px;   text-align: left;\">\n            <p> \n\n            Czarina Madayag | Communications, Marketing and Grants Coordinator| ShareTree.org\n            Service | Innovation | Excellence\n            </p> \n\n            <p> \n\n            Working days: Tuesday \u2013 Friday 8am-4pm \n            </p> \n\n            We\u2019re committed to Mental Health & Wellbeing. Join us - https://www.sharetree.org/jointhepulse\n            <p> \n\n            260A Blackburn Road, Glen Waverley VIC 3150 |E: mailto:czarina@sharetree.org\n            </p>\n\n\n            Please join me on Emotional Pulse\n\n        </div>\n\n    </div>\n\n",
+ "message_type": "HTML",
+ "modified": "2024-03-26 07:11:56.439790",
+ "modified_by": "admin@demo.com",
+ "module": "Hublms",
+ "name": "quiz-support",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "member"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Notifications",
+ "sender_email": "lms.hubtoo@gmail.com",
+ "subject": "Do you need further support? "
+}
